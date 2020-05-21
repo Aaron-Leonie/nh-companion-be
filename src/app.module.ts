@@ -13,7 +13,7 @@ import { UsersModule } from './users/users.module';
       autoSchemaFile: true,
       context: ({req}) => ({req}),
     }),
-    // Modify connect URI for personal db environment. I used Docker here.
+    // Modify connect URI for personal db environment. I used Docker here. 
     MongooseModule.forRoot('mongodb://admin:password@localhost:27017/companion', {useNewUrlParser: true}),
     UsersModule,
   ],
