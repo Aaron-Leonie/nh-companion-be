@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { GraphQLModule } from '@nestjs/graphql';
 import { MongooseModule } from '@nestjs/mongoose';
 import { UsersModule } from './users/users.module';
+import { PostsModule } from './posts/posts.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { UsersModule } from './users/users.module';
     // Modify connect URI for personal db environment. I used Docker here. 
     MongooseModule.forRoot('mongodb://localhost:27017/companion', {useNewUrlParser: true}),
     UsersModule,
+    PostsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
