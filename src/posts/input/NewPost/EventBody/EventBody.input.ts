@@ -1,7 +1,8 @@
 import { Field, InputType} from '@nestjs/graphql';
 import { MaxLength, Length } from 'class-validator';
 
-export class EventBody {
+@InputType()
+export class EventBodyInput {
     @Field()
     @MaxLength(120)
     eventTitle: string;

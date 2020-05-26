@@ -26,13 +26,14 @@ export class UsersResolver {
     @Mutation(returns => NewUser)
     async createUser(
         @Args('input') input: NewUserInput,
-        @Args({ name: 'avatar', type: () => GraphQLUpload })
-        {
-            createReadStream,
-            filename,
-        }: FileUpload): Promise<NewUser> {
-        createReadStream()
-            .pipe(createWriteStream(`../uploads/${filename}`));
+        @Args({ name: 'avatar', type: () => GraphQLUpload, nullable: true })
+        // {
+        //     createReadStream,
+        //     filename,
+        // }
+        file: FileUpload): Promise<NewUser> {
+        // createReadStream()
+        //     .pipe(createWriteStream(`../uploads/${filename}`));
         const newUser = await this.usersService.createNewUser(input);
         return {
             userId: newUser._id,
