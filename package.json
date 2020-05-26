@@ -32,12 +32,14 @@
     "class-validator": "^0.12.2",
     "graphql": "^15.0.0",
     "graphql-tools": "^5.0.0",
+    "graphql-upload": "^10.0.0",
     "mongoose": "^5.9.15",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.0",
-    "rxjs": "^6.5.3"
+    "rxjs": "^6.5.3",
+    "uuid": "^8.1.0"
   },
   "devDependencies": {
     "@nestjs/cli": "^6.9.0",

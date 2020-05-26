@@ -14,7 +14,7 @@ import { UsersModule } from './users/users.module';
       context: ({req}) => ({req}),
     }),
     // Modify connect URI for personal db environment. I used Docker here. 
-    MongooseModule.forRoot('mongodb://admin:password@localhost:27017/companion', {useNewUrlParser: true}),
+    MongooseModule.forRoot('mongodb://localhost:27017/companion', {useNewUrlParser: true}),
     UsersModule,
   ],
   controllers: [AppController],

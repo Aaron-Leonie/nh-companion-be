@@ -4,10 +4,12 @@ import { UseGuards } from '@nestjs/common';
 import { NewUser } from './dto/NewUser.dto';
 import { NewUserInput } from './input/NewUserInput.input';
 import { UsersService } from './users.service';
-import { CurrentUser } from '../decorators/current-user.decorator';
+import { CurrentUser } from '../lib/decorators/current-user.decorator';
 import { LoginPayload } from './dto/LoginPayload.dto';
 import { LoginInput } from './input/LoginInput.dto';
 import { User } from './dto/User.dto';
+import { GraphQLUpload, FileUpload } from 'graphql-upload';
+import { createWriteStream } from 'fs';
 
 @Resolver('Users')
 export class UsersResolver {
@@ -22,7 +24,15 @@ export class UsersResolver {
 
     // Register new User
     @Mutation(returns => NewUser)
-    async createUser(@Args('input') input: NewUserInput): Promise<NewUser> {
+    async createUser(
+        @Args('input') input: NewUserInput,
+        @Args({ name: 'avatar', type: () => GraphQLUpload })
+        {
+            createReadStream,
+            filename,
+        }: FileUpload): Promise<NewUser> {
+        createReadStream()
+            .pipe(createWriteStream(`../uploads/${filename}`));
         const newUser = await this.usersService.createNewUser(input);
         return {
             userId: newUser._id,
@@ -37,5 +47,10 @@ export class UsersResolver {
             token: loggedInUser.access_token,
             userId: loggedInUser.userId,
         } as LoginPayload;
+    }
+
+    @Mutation(returns => String)
+    async image(@Args({ name: 'avatar', type: () => GraphQLUpload }) image): Promise<string> {
+        return 'fuck';
     }
 }
