@@ -1,12 +1,15 @@
-import { Field, ObjectType } from '@nestjs/graphql';
+import { Field, ObjectType, ID } from '@nestjs/graphql';
 import { PostAuthor } from './PostAuthor/PostAuthor.dto';
 import { TextBody } from './TextBody/TextBody.dto';
 import { EventBody } from './EventBody/EventBody.dto';
 
 @ObjectType()
 export class Post {
+    @Field(type => ID)
+    postId: string;
+
     @Field(type => PostAuthor)
-    author: PostAuthor;
+    user: PostAuthor;
 
     @Field()
     postType: string;

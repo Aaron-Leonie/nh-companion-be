@@ -17,13 +17,32 @@ export class PostsResolver {
     }
 
     @UseGuards(GqlAuthGaurd)
-    @Mutation(returns => /* Post */ String)
+    @Mutation(returns => Post)
     async createPost(
         @CurrentUser() user: any,
         @Args({name: 'newPost', type: () => NewPost})
         newPost: NewPost,
-        ): Promise<string> {
-        this.postsService.createPost(user.sub, newPost);
-        return 'asdf';
+        ): Promise<any> {
+
+        const dbResult = await this.postsService.createPost(user.sub, newPost);
+        const postResult = {
+            postId: dbResult._id,
+            user: {
+                avatarUrl: dbResult.user.avatarUrl,
+                userId: dbResult.user.userId,
+                islandName: dbResult.user.islandName,
+                userName: dbResult.user.userName,
+            },
+            postType: dbResult.postType,
+            eventBody: {
+                eventTitle: dbResult.eventBody.eventTitle,
+                body: dbResult.eventBody.body,
+                inviteStatus: dbResult.eventBody.inviteStatus,
+            },
+            textBody: {
+                body: dbResult.textBody.body,
+            },
+        } as Post;
+        return  postResult;
     }
 }

@@ -14,9 +14,20 @@ export class PostsService {
         @InjectModel('User') private readonly userModel: Model<User>
         ) {}
 
-    async createPost(userId: string, newPost: NewPost): Promise<any> {
+    async createPost(userId: string, newPost: NewPost): Promise<Post> {
+        // Get User Who made post
         const user = await this.userModel.findOne({_id: userId});
-        console.log(newPost);
-        return;
+        // Create Post following model
+        const post = new this.postModel({
+            ...newPost,
+            user: {
+                avatarUrl: 'https://blah.com/blah.png',
+                userName: 'AfterMidnite',
+                islandName: 'Blah',
+                userId: user._id,
+            },
+        });
+        // Save that post
+        return post.save();
     }
 }

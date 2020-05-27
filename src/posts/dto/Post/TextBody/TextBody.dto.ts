@@ -2,6 +2,6 @@ import { Field, ObjectType } from '@nestjs/graphql';
 
 @ObjectType()
 export class TextBody {
-    @Field()
+    @Field(type => String, {nullable: true})
     body: string;
 }
