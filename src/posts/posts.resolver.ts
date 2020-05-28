@@ -35,6 +35,7 @@ export class PostsResolver {
             },
             postType: dbResult.postType,
             eventBody: {
+                eventId: dbResult.eventBody.eventId,
                 eventTitle: dbResult.eventBody.eventTitle,
                 body: dbResult.eventBody.body,
                 inviteStatus: dbResult.eventBody.inviteStatus,
@@ -42,6 +43,7 @@ export class PostsResolver {
             textBody: {
                 body: dbResult.textBody.body,
             },
+            createdAt: dbResult.createdAt,
         } as Post;
         return  postResult;
     }

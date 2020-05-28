@@ -1,5 +1,5 @@
-import { Field, InputType} from '@nestjs/graphql';
-import { MaxLength, Length } from 'class-validator';
+import { Field, InputType, Int} from '@nestjs/graphql';
+import { MaxLength, Length, IsNumber } from 'class-validator';
 
 @InputType()
 export class EventBodyInput {
@@ -14,4 +14,8 @@ export class EventBodyInput {
     @Field()
     @MaxLength(120)
     inviteStatus: string;
+
+    @Field(type => Int)
+    @IsNumber()
+    eventId: number;
 }

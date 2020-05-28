@@ -19,4 +19,7 @@ export class Post {
 
     @Field(type => EventBody, {nullable: true})
     eventBody?: EventBody;
+
+    @Field(type => String)
+    createdAt: string;
 }

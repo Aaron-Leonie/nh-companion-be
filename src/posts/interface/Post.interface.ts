@@ -1,4 +1,4 @@
-import  {Document } from 'mongoose';
+import {Document } from 'mongoose';
 
 export interface Post extends Document {
     user: {
@@ -17,9 +17,9 @@ export interface Post extends Document {
         eventTitle: String,
         body: String,
         inviteStatus: String,
+        eventId: Number,
     };
-    timestamps: {
-        createdAt: 'createdAt',
-        updatedAt: 'updatedAt',
-    };
+
+    createdAt: any;
+    updatedAt: any;
 }

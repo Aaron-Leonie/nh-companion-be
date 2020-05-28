@@ -12,6 +12,7 @@ export const PostSchema = new mongoose.Schema({
         body: String,
     },
     eventBody: {
+        eventId: Number,
         eventTitle: String,
         body: String,
         inviteStatus: String,

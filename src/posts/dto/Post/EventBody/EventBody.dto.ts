@@ -1,13 +1,16 @@
-import { Field, ObjectType } from '@nestjs/graphql';
+import { Field, ObjectType, Int } from '@nestjs/graphql';
 
 @ObjectType()
 export class EventBody {
-    @Field()
+    @Field(type => String, {nullable: true})
     eventTitle: string;
 
-    @Field()
+    @Field(type => String, {nullable: true})
     body: string;
 
-    @Field()
+    @Field(type => String, {nullable: true})
     inviteStatus: string;
+
+    @Field(type => Int, {nullable: true})
+    eventId: number;
 }
