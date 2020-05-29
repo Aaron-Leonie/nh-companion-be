@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "wedding-3451",
+  "private_key_id": "a3c8fca094a0fd1880570391ea594658346bba63",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQC1JsXkOzs11M2X\npbybXuJVERu21R2hBzU/jXLR152pXkI11CsDB+MDVFmiUGmvS9yTw7ePUvtR5YGg\n0O3jOZB84J+zWBkIZ6gL37fKfHacLcHQ8MKJ9ZlW2JknnH5Amtjg/nregssIL9++\nWwHGleSCEbqBU63L6z2CKE13dchPRiW8MJul+c1dBtjDfJORW571dmVEEYvDYsHf\nZd0dw3hXAG1pZ+VcuC9Dp0jmXQcySM1xAWNLi0u00UNb8W9NixNWF00E6rqkZAVz\nme/ubWbcaVD4sNc190/hH0ZTe9KmBgMiptbY7SChQz/TuENO8DTjHkxRwO7n68Jj\nmzGRaTdrAgMBAAECggEAVpub/ztGWr1MMhWeL9ZUdYFBc88+ZC+TCLhyzdq9WS1k\nkGHI0qEhqwTX+d9iN9oYMllfWFm/KG+G40EgiwOJjfrCv7b9+OO+Fzc1osyQ1KiX\nwnJpQBY44qmZx7NtNSwTRrbEPb/gnCBvY44VMkGVx438UjqUnCry9FiaeOPKCgPa\nc6HT8O0lfvgnkSOP3OhwFNEA+3w0QCMRePLTaGJxLO/icIWXQr0q77uEc3QlNBix\nJR6jUgtKxRLE2ylPMbvcV9g9BbG4oZ0bD9r6JFGfkF3wOPFuYNh5AY6OMdpmx6eI\nz96s4zxUM9beoCSaIQqn9aU8S3ACm5JeoXqef5Qx2QKBgQD50lblNoNvFKlJTYZq\nqaiEz+ROY53KSxgXVZ3CmH8cn44qIdxFKZLlkExFb1pT88tQFsFoqBI6s1TDVYN5\nj0k7CMpKKxpaXqicGzjo1cFmh1hWgrCiIcPXELjHphH0+HBVlSeby5+x4bZ0xted\n58BBNE0A9VPO7rQz0hGiSrHDJQKBgQC5oav2Yudmo9OgANTCdC96i8nguFOIw+Wi\nq4n1Fzj0xIjgCBHygTOBwgJjiBC09ThE1xHBjibPMwCKd6LHLBDKMbq/XV22H4en\nwirwu1pGVeMt1B4I04jLqziOJgsLX8SnQh87TDyMl80GNhpd9wLHPf4G+nIPNAsZ\nxGMii1VTTwKBgGlvD0NflWrtEmEgeelMPxYGUzmOK0r0FG/Mr28wQv1GjY5Uig0a\ndaezFa18SGgEDTt4zxmnTUI+6zghQAKuqV5j4FQbCt028/wmNQd3J09pMawZLgjP\nLUL4CLQh75QuweIst/G1p2lAdGume9tlsqsSMqmD4GIGNkFkmBKhaZKNAoGABZgY\nrZEndhFj1EOSJdYIhEHoMIx9f/afWfqfarJrdfziPxYfLFa2baeiGMvF7R4itvhg\nQZv+EWpxDrsyPZxXWTCMdy3iIBXtKaIRVzXeL5ZxBTWKPivZyIF9b9M3q/0T2RKG\nDGxsurPsas6AlupVvBljKWSswUaJOxqO/kCCrsMCgYAYuOVYMs6/noBRh+8anaDz\nasfzndBvv4Z71jtjaNIOQYt5iKs6V/Yrr4EmR0LCnoqyFFAqj9o9nkIjBcWxNruH\nJvu6HeyFj9H1acIu8owH3St9iQuGke4WQu5Mp3BwvFgMFY57wLJaIBT62r/SMr5w\nL0v75RhxAzaXn6/o/Gj8cA==\n-----END PRIVATE KEY-----\n",
+  "client_email": "local-companion@wedding-3451.iam.gserviceaccount.com",
+  "client_id": "105439422604644339323",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/local-companion%40wedding-3451.iam.gserviceaccount.com"
+}
