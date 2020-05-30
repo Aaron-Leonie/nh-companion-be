@@ -47,4 +47,17 @@ export class PostsResolver {
         } as Post;
         return  postResult;
     }
+
+    @Query(returns => [Post])
+    async getPostsForUser(
+        @Args({name: 'userId', type: () => String})
+        userId: string,
+        @Args({name: 'first', type: () => Number})
+        first: number,
+        @Args({name: 'after', type: () => String})
+        after: string,
+        ): Promise<Post[]> {
+        this.postsService.getPostsForUser(userId, first, after);
+        return null;
+    }
 }

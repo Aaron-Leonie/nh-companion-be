@@ -9,13 +9,13 @@ export class UploadService {
         @InjectModel('User') private readonly userModel: Model<User>,
         ) {}
 
-    async saveAvatar(userId: string, avatarId: string): Promise<User> {
+    async saveAvatar(userId: string, avatarUrl: string): Promise<User> {
         const user = await this.userModel.findOne({_id: userId});
 
         if (!user) {
             throw new HttpException('Database Error', HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
-        return user.updateOne({avatarId});
+        return user.updateOne({avatarUrl});
     }
 }

@@ -21,13 +21,18 @@ export class PostsService {
         const post = new this.postModel({
             ...newPost,
             user: {
-                avatarUrl: 'https://blah.com/blah.png',
-                userName: 'AfterMidnite',
-                islandName: 'Blah',
+                avatarUrl: user.avatarUrl,
+                userName: user.userName,
+                islandName: user.islandName,
                 userId: user._id,
             },
         });
         // Save that post
         return post.save();
+    }
+
+    // TODO Research cursor pagination MONGO
+    async getPostsForUser(userId: string, first: number, after: string) {
+        const posts  = this.postModel.find()
     }
 }

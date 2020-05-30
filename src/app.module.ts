@@ -15,8 +15,8 @@ import { UploadModule } from './upload/upload.module';
       autoSchemaFile: true,
       context: ({req}) => ({req}),
     }),
-    // Modify connect URI for personal db environment. I used Docker here. 
-    MongooseModule.forRoot('mongodb://localhost:27017/companion', {useNewUrlParser: true}),
+    // Modify connect URI for personal db environment. I used Docker here.
+    MongooseModule.forRoot('mongodb://localhost:27017/companion', {useNewUrlParser: true, useCreateIndex: true}),
     UsersModule,
     PostsModule,
     UploadModule,
