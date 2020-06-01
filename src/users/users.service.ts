@@ -1,4 +1,4 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { Injectable, UnauthorizedException, HttpException, HttpStatus, HttpCode } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { JwtService } from '@nestjs/jwt';
 import {Model} from 'mongoose';
@@ -14,8 +14,21 @@ export class UsersService {
 
     // Implement Password hashing
     async createNewUser(newUser: NewUserInput): Promise<User> {
+        const userCheck = await this.userModel.findOne({$or: [{userName: newUser.userName}, {email: newUser.email}]});
+
+        // Verification user isn't already created
+        if (userCheck) {
+            if (userCheck.userName === newUser.userName && userCheck.email === newUser.email) {
+                throw new HttpException('Username & Email already exists.', HttpStatus.CONFLICT);
+            } else if (userCheck.email === newUser.email){
+                throw new HttpException('Email already exists.', HttpStatus.CONFLICT);
+            } else if (userCheck.userName === newUser.userName) {
+                throw new HttpException('Username already exists.', HttpStatus.CONFLICT);
+            }
+        }
+
         const createdUser = new this.userModel(newUser);
-        return createdUser.save();
+        return createdUser.save().then().catch( e => {throw new HttpException('Database Error', HttpStatus.INTERNAL_SERVER_ERROR); });
     }
 
     // Need password hashing here too.

@@ -1,6 +1,6 @@
 import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
 import { GqlAuthGaurd } from '../auth.guard';
-import { UseGuards } from '@nestjs/common';
+import { UseGuards, HttpException, HttpCode, HttpStatus } from '@nestjs/common';
 import { NewUser } from './dto/NewUser.dto';
 import { NewUserInput } from './input/NewUserInput.input';
 import { UsersService } from './users.service';
@@ -26,16 +26,21 @@ export class UsersResolver {
     @Mutation(returns => NewUser)
     async createUser(
         @Args('input') input: NewUserInput,
-        @Args({ name: 'avatar', type: () => GraphQLUpload })
-        {
-            createReadStream,
-            filename,
-        }: FileUpload): Promise<NewUser> {
-        createReadStream()
-            .pipe(createWriteStream(`../uploads/${filename}`));
-        const newUser = await this.usersService.createNewUser(input);
+        // @Args({ name: 'avatar', type: () => GraphQLUpload, nullable: true })
+        // // {
+        // //     createReadStream,
+        // //     filename,
+        // // }
+        // file: FileUpload
+        ): Promise<NewUser> {
+        // createReadStream()
+        //     .pipe(createWriteStream(`../uploads/${filename}`));
+
+        const newUser = await this.usersService.createNewUser(input)
+        const loggedInUser = await this.usersService.login(input);
         return {
             userId: newUser._id,
+            token: loggedInUser.access_token,
         } as NewUser;
     }
 
