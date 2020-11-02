@@ -5,7 +5,10 @@ export const UserSchema = new mongoose.Schema({
         type: String,
         unique: true,
     },
-    password: String,
+    password: {
+        type: String,
+        select: false
+    },
     avatarUrl: String,
     islandName: String,
     userName: {
@@ -13,4 +16,10 @@ export const UserSchema = new mongoose.Schema({
         unique: true,
         index: true,
     },
+    friendCode: {
+        type: String,
+    },
+    aboutText: {
+        type: String,
+    }
 });

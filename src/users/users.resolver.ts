@@ -9,7 +9,7 @@ import { LoginPayload } from './dto/LoginPayload.dto';
 import { LoginInput } from './input/LoginInput.dto';
 import { User } from './dto/User.dto';
 import { GraphQLUpload, FileUpload } from 'graphql-upload';
-import { createWriteStream } from 'fs';
+import { PublicUser } from './dto/PublicUser.dto';
 
 @Resolver('Users')
 export class UsersResolver {
@@ -57,5 +57,12 @@ export class UsersResolver {
     @Mutation(returns => String)
     async image(@Args({ name: 'avatar', type: () => GraphQLUpload }) image): Promise<string> {
         return 'fuck';
+    }
+
+
+    // TODO come here and set up public user
+    @Query(returns => PublicUser) 
+    async getPublicUser(@Args('userId') userId: string): Promise<PublicUser> {
+        return this.usersService.getPublicUser(userId);
     }
 }

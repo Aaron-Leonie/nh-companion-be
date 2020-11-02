@@ -4,6 +4,7 @@ import { JwtService } from '@nestjs/jwt';
 import {Model} from 'mongoose';
 import { User } from './interfaces/user.interface';
 import { NewUserInput } from './input/NewUserInput.input';
+import { PublicUser } from './dto/PublicUser.dto';
 
 @Injectable()
 export class UsersService {
@@ -33,7 +34,7 @@ export class UsersService {
 
     // Need password hashing here too.
     async validateUser(newUser: NewUserInput) {
-        const user = await this.userModel.findOne({email: newUser.email});
+        const user = await this.userModel.findOne({email: newUser.email}, '+password');
         if (user && user.password === newUser.password) {
             return user;
         }
@@ -55,5 +56,14 @@ export class UsersService {
 
     async getUser(user: any) {
         return await this.userModel.findOne({_id: user.sub});
+    }
+
+    async getPublicUser(userId: string): Promise<PublicUser> {
+        var user: any = await this.userModel.findById(userId);
+        if(!user) {
+            throw new HttpException('User not found', HttpStatus.NOT_FOUND);
+        }
+        user.userId = user._id;
+        return user;
     }
 }
